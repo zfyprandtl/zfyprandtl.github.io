@@ -5,21 +5,21 @@
   
 
   
-  <title>双曲型方程组与黎曼解 | Hexo</title>
+  <title>双曲型方程组与黎曼解 | TrueStr!ke&#39;s CFD Learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 双曲型方程组对于形如\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}\frac{\partial \mathbf{U}}{\partial x}=0一类方程，如果矩阵\mathbf{A}可以被对角化，即\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}，">
+  <meta name="description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 双曲型方程组对于形如 \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}\frac{\partial \mathbf{U}}{\partial x}=0\tag{1}一类方程，如果矩阵\mathbf{A}可以被对角化，即\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\ma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="双曲型方程组与黎曼解">
 <meta property="og:url" content="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 双曲型方程组对于形如\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}\frac{\partial \mathbf{U}}{\partial x}=0一类方程，如果矩阵\mathbf{A}可以被对角化，即\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}，">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-18T17:44:54.476Z">
+<meta property="og:site_name" content="TrueStr!ke&#39;s CFD Learning">
+<meta property="og:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 双曲型方程组对于形如 \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}\frac{\partial \mathbf{U}}{\partial x}=0\tag{1}一类方程，如果矩阵\mathbf{A}可以被对角化，即\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\ma">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-08-18T18:12:41.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双曲型方程组与黎曼解">
-<meta name="twitter:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 双曲型方程组对于形如\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}\frac{\partial \mathbf{U}}{\partial x}=0一类方程，如果矩阵\mathbf{A}可以被对角化，即\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}，">
+<meta name="twitter:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 双曲型方程组对于形如 \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}\frac{\partial \mathbf{U}}{\partial x}=0\tag{1}一类方程，如果矩阵\mathbf{A}可以被对角化，即\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\ma">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="TrueStr!ke&#39;s CFD Learning" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -38,8 +38,12 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">TrueStr!ke&#39;s CFD Learning</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Flow never stops.</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -87,12 +91,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本篇博文将简要介绍双曲型方程组与黎曼解。</p>
-<h2 id="双曲型方程组"><a href="#双曲型方程组" class="headerlink" title="双曲型方程组"></a>双曲型方程组</h2><p>对于形如<script type="math/tex">\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}\frac{\partial \mathbf{U}}{\partial x}=0</script>一类方程，如果矩阵<script type="math/tex">\mathbf{A}</script>可以被对角化，即<script type="math/tex">\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}</script>，则称原方程是双曲型的。</p>
-
+<h2 id="双曲型方程组"><a href="#双曲型方程组" class="headerlink" title="双曲型方程组"></a>双曲型方程组</h2><p>对于形如</p>
+<script type="math/tex; mode=display">\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}\frac{\partial \mathbf{U}}{\partial x}=0\tag{1}</script><p>一类方程，如果矩阵<script type="math/tex">\mathbf{A}</script>可以被对角化，即<script type="math/tex">\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}</script>，则称原方程是双曲型的。</p>
+<p>将方程(1)乘<script type="math/tex">\mathbf{S}</script>，</p>
+<script type="math/tex; mode=display">\mathbf{S} \frac{\partial \mathbf{U}}{\partial t}+\mathbf{\Lambda}\mathbf{S}\frac{\partial \mathbf{U}}{\partial x}=0 \tag{2}</script>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="cjzh9gcup000158tibp9q31w1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="cjzhag55y0001g4tiojj45vha" class="article-share-link">Share</a>
       
       
     </footer>
@@ -160,7 +166,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
+      &copy; 2019 Zheng Feng-Yi<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
