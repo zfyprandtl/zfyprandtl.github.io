@@ -89,14 +89,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本篇博文将简要介绍双曲型方程组与黎曼解。</p>
-<h2 id="双曲型方程组"><a href="#双曲型方程组" class="headerlink" title="双曲型方程组"></a>双曲型方程组</h2><p>对于形如</p>
-<script type="math/tex; mode=display">\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}\frac{\partial \mathbf{U}}{\partial x}=0\tag{1}</script><p>一类方程，如果矩阵<script type="math/tex">\mathbf{A}</script>可以被对角化，即<script type="math/tex">\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}</script>，则称原方程是双曲型的。</p>
-<p>将方程(1)乘<script type="math/tex">\mathbf{S}</script>，</p>
-<script type="math/tex; mode=display">\mathbf{S} \frac{\partial \mathbf{U}}{\partial t}+\mathbf{\Lambda}\mathbf{S}\frac{\partial \mathbf{U}}{\partial x}=0 \tag{2}</script>
+<h2 id="双曲型方程组简介"><a href="#双曲型方程组简介" class="headerlink" title="双曲型方程组简介"></a>双曲型方程组简介</h2><p>对于形如</p>
+<script type="math/tex; mode=display">\begin{equation}
+\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf{U})\frac{\partial \mathbf{U}}{\partial x}= 0\label{eq:1}
+\end{equation}</script><script type="math/tex; mode=display">$$
+
+一类方程，如果矩阵$$\mathbf{A}$$可以被对角化，即$$\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}$$，则称原方程是双曲型的。
+
+将方程(1)乘$$\mathbf{S}$$，
+
+$$\mathbf{S} \frac{\partial \mathbf{U}}{\partial t}+\mathbf{\Lambda}\mathbf{S}\frac{\partial \mathbf{U}}{\partial x}=0 \tag{2}</script><script type="math/tex; mode=display">\begin{equation}
+\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf{U})\frac{\partial \mathbf{U}}{\partial x}=0\tag{1}
+\end{equation}</script><p>将矩阵<script type="math/tex">\mathbf{S}</script>写成行向量的形式</p>
+<script type="math/tex; mode=display">\left(\begin{matrix} \mathbf{s}_1 \\ \mathbf{s}_2 \\ \vdots\\\mathbf{s}_n     \end{matrix}\right) \frac{\partial \mathbf{U}}{\partial t}+\left(\begin{matrix} \lambda_1 &  & \\&\lambda_2\\&&\ddots\\&&&\lambda_n     \end{matrix}\right)\left(\begin{matrix} \mathbf{s}_1 \\ \mathbf{s}_2 \\ \vdots\\\mathbf{s}_n     \end{matrix}\right)\frac{\partial \mathbf{U}}{\partial x} =0 \tag{3}</script><p>将其写成分量形式</p>
+<script type="math/tex; mode=display">\mathbf{s}_k\cdot(\frac{\partial \mathbf{U}}{\partial t}+\lambda_k\frac{\partial \mathbf{U}}{\partial x}) =0\tag{4}</script><p>在<script type="math/tex">x-t</script>空间内引入特征线<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=\lambda_k</script>，这样，原方程可以演化为沿特征线方向的常微分方程</p>
+<script type="math/tex; mode=display">\mathbf{s}_k\cdot\frac{\mathrm{d}\mathbf{U}}{\mathrm{d}t}=0\tag{5}</script><h1 id="一维绝热流动"><a href="#一维绝热流动" class="headerlink" title="一维绝热流动"></a>一维绝热流动</h1><p>不考虑粘性，流体微团运动过程中熵不变；如果来流熵均匀分布，则全流场熵均匀分布，能量方程可用熵为常数替代。其控制方程为</p>
+<script type="math/tex; mode=display">\frac{\partial\rho}{\partial t}+\frac{\partial\rho u}{\partial x}=0  \\\frac{\partial\rho u}{\partial t}+\frac{\partial\rho u}{\partial x}=0</script>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="cjzhag55y0001g4tiojj45vha" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="cjzhbwqb30000sgtig5n75fuh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/19/hello-world/" data-id="cjzhag55s0000g4timx8byrx3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/19/hello-world/" data-id="cjzhbwqb90001sgtiou3xg1zn" class="article-share-link">Share</a>
       
       
     </footer>
