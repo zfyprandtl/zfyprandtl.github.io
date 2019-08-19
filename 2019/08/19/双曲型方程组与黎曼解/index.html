@@ -7,17 +7,17 @@
   
   <title>双曲型方程组与黎曼解 | TrueStr!ke&#39;s CFD Learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 双曲型方程组简介对于形如 \begin{equation} \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf{U})\frac{\partial \mathbf{U}}{\partial x}= 0\label{eq:1} \end{equation}$$  一类方程，如果矩阵$$\math">
+  <meta name="description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 特征向量矩阵   u x方向速度分量   p 压力                    双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="双曲型方程组与黎曼解">
 <meta property="og:url" content="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/index.html">
 <meta property="og:site_name" content="TrueStr!ke&#39;s CFD Learning">
-<meta property="og:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 双曲型方程组简介对于形如 \begin{equation} \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf{U})\frac{\partial \mathbf{U}}{\partial x}= 0\label{eq:1} \end{equation}$$  一类方程，如果矩阵$$\math">
+<meta property="og:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 特征向量矩阵   u x方向速度分量   p 压力                    双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-08-18T18:53:37.633Z">
+<meta property="og:updated_time" content="2019-08-19T11:41:48.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双曲型方程组与黎曼解">
-<meta name="twitter:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 双曲型方程组简介对于形如 \begin{equation} \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf{U})\frac{\partial \mathbf{U}}{\partial x}= 0\label{eq:1} \end{equation}$$  一类方程，如果矩阵$$\math">
+<meta name="twitter:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 特征向量矩阵   u x方向速度分量   p 压力                    双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf">
   
     <link rel="alternate" href="/atom.xml" title="TrueStr!ke&#39;s CFD Learning" type="application/atom+xml">
   
@@ -91,26 +91,73 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本篇博文将简要介绍双曲型方程组与黎曼解。</p>
+<h1 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><script type="math/tex">\mathbf{A}</script></td>
+<td style="text-align:center">系数矩阵</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">\mathbf{U}</script></td>
+<td style="text-align:center">速度矢量</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">\mathbf{S}</script></td>
+<td style="text-align:center">特征向量矩阵</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">u</script></td>
+<td style="text-align:center"><script type="math/tex">x</script>方向速度分量</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">p</script></td>
+<td style="text-align:center">压力</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="双曲型方程组简介"><a href="#双曲型方程组简介" class="headerlink" title="双曲型方程组简介"></a>双曲型方程组简介</h2><p>对于形如</p>
-<script type="math/tex; mode=display">\begin{equation}
-\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf{U})\frac{\partial \mathbf{U}}{\partial x}= 0\label{eq:1}
-\end{equation}</script><script type="math/tex; mode=display">$$
-
-一类方程，如果矩阵$$\mathbf{A}$$可以被对角化，即$$\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}$$，则称原方程是双曲型的。
-
-将方程(1)乘$$\mathbf{S}$$，
-
-$$\mathbf{S} \frac{\partial \mathbf{U}}{\partial t}+\mathbf{\Lambda}\mathbf{S}\frac{\partial \mathbf{U}}{\partial x}=0 \tag{2}</script><script type="math/tex; mode=display">\begin{equation}
-\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf{U})\frac{\partial \mathbf{U}}{\partial x}=0\tag{1}
-\end{equation}</script><p>将矩阵<script type="math/tex">\mathbf{S}</script>写成行向量的形式</p>
+<script type="math/tex; mode=display">\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf{U})\frac{\partial \mathbf{U}}{\partial x}=0\tag{1}</script><p>一类方程，如果矩阵<script type="math/tex">\mathbf{A}</script>可以被对角化，即<script type="math/tex">\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}</script>，则称原方程是双曲型的。</p>
+<p>将方程(1)左乘<script type="math/tex">\mathbf{S}</script>，</p>
+<script type="math/tex; mode=display">\mathbf{S} \frac{\partial \mathbf{U}}{\partial t}+\mathbf{\Lambda}\mathbf{S}\frac{\partial \mathbf{U}}{\partial x}=0 \tag{2}</script><p>将矩阵<script type="math/tex">\mathbf{S}</script>写成行向量的形式</p>
 <script type="math/tex; mode=display">\left(\begin{matrix} \mathbf{s}_1 \\ \mathbf{s}_2 \\ \vdots\\\mathbf{s}_n     \end{matrix}\right) \frac{\partial \mathbf{U}}{\partial t}+\left(\begin{matrix} \lambda_1 &  & \\&\lambda_2\\&&\ddots\\&&&\lambda_n     \end{matrix}\right)\left(\begin{matrix} \mathbf{s}_1 \\ \mathbf{s}_2 \\ \vdots\\\mathbf{s}_n     \end{matrix}\right)\frac{\partial \mathbf{U}}{\partial x} =0 \tag{3}</script><p>将其写成分量形式</p>
-<script type="math/tex; mode=display">\mathbf{s}_k\cdot(\frac{\partial \mathbf{U}}{\partial t}+\lambda_k\frac{\partial \mathbf{U}}{\partial x}) =0\tag{4}</script><p>在<script type="math/tex">x-t</script>空间内引入特征线<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=\lambda_k</script>，这样，原方程可以演化为沿特征线方向的常微分方程</p>
-<script type="math/tex; mode=display">\mathbf{s}_k\cdot\frac{\mathrm{d}\mathbf{U}}{\mathrm{d}t}=0\tag{5}</script><h1 id="一维绝热流动"><a href="#一维绝热流动" class="headerlink" title="一维绝热流动"></a>一维绝热流动</h1><p>不考虑粘性，流体微团运动过程中熵不变；如果来流熵均匀分布，则全流场熵均匀分布，能量方程可用熵为常数替代。其控制方程为</p>
-<script type="math/tex; mode=display">\frac{\partial\rho}{\partial t}+\frac{\partial\rho u}{\partial x}=0  \\\frac{\partial\rho u}{\partial t}+\frac{\partial\rho u}{\partial x}=0</script>
+<script type="math/tex; mode=display">\mathbf{s}_k\cdot(\frac{\partial \mathbf{U}}{\partial t}+\lambda_k\frac{\partial \mathbf{U}}{\partial x}) =0\tag{4}</script><p>在<script type="math/tex">x-t</script>空间内引入特征线<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=\lambda_k</script>，在特征线上有</p>
+<script type="math/tex; mode=display">\frac{\mathrm{d}\mathbf{U}}{\mathrm{d}t}=\frac{\partial \mathbf{U}}{\partial t}+\lambda_k\frac{\partial \mathbf{U}}{\partial x} \tag{5}</script><p>原方程可以演化为沿特征线方向的常微分方程</p>
+<script type="math/tex; mode=display">\mathbf{s}_k\cdot\frac{\mathrm{d}\mathbf{U}}{\mathrm{d}t}=0\tag{6}</script><h1 id="一维均熵绝热流动"><a href="#一维均熵绝热流动" class="headerlink" title="一维均熵绝热流动"></a>一维均熵绝热流动</h1><p>不考虑粘性，流体微团运动过程中熵不变；如果来流熵均匀分布，则全流场熵均匀分布，能量方程可用熵为常数替代。其控制方程为</p>
+<script type="math/tex; mode=display">\frac{\partial\rho}{\partial t}+\frac{\partial\rho u}{\partial x}=0  \tag{7}</script><script type="math/tex; mode=display">\frac{\partial\rho u}{\partial t}+\frac{\partial\left(\rho u^2 +p\right)}{\partial x}=0 \tag{8}</script><p>在绝热流动中有<script type="math/tex">\frac{\partial p}{\partial \rho}=c^2</script>，式(6)(7)可以写成</p>
+<script type="math/tex; mode=display">\frac{\partial\rho}{\partial t}+u\frac{\partial\rho }{\partial x}+\rho\frac{\partial u}{\partial x}=0  \tag9{}</script><script type="math/tex; mode=display">\frac{\partial u}{\partial t}+\frac{c^2}{\rho}\frac{\partial \rho}{\partial x}+u\frac{\partial u}{\partial x}=0 \tag{10}</script><p>参照式(1)，可以得到<script type="math/tex">\mathbf{U}=\left(\begin{matrix}\rho\\u\end{matrix}\right),\mathbf{A}=\left(\begin{matrix}u&\rho\\\frac{c^2}{\rho}&u\end{matrix}\right)</script></p>
+<p>可以得到矩阵<script type="math/tex">\mathbf{A}</script>的特征值<script type="math/tex">\lambda_{1,2}=u\pm c</script>，对角变换矩阵<script type="math/tex">\mathbf{S}=\left(\begin{matrix}c&\rho\\-c&\rho\end{matrix}\right)</script>，<script type="math/tex">\mathbf{S}^{-1}=\left(\begin{matrix}\frac{1}{2c}&-\frac{1}{2c}\\\frac{1}{2\rho}&\frac{1}{2\rho}\end{matrix}\right)</script>。将其代入式(2)，可以得到</p>
+<script type="math/tex; mode=display">c\left(\frac{\partial\rho}{\partial t}+\lambda_1\frac{\partial\rho}{\partial x}\right)+\rho\left(\frac{\partial u}{\partial t}+\lambda_1\frac{\partial u}{\partial x}\right)=0\tag{11}</script><script type="math/tex; mode=display">-c\left(\frac{\partial\rho}{\partial t}+\lambda_2\frac{\partial\rho}{\partial x}\right)+\rho\left(\frac{\partial u}{\partial t}+\lambda_2\frac{\partial u}{\partial x}\right)=0\tag{12}</script><p>沿特征线<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=\lambda_1</script>方向，式(11)可以写成</p>
+<script type="math/tex; mode=display">\frac{\mathrm{d}\rho}{\mathrm{d}t}+\frac{\rho}{c}\frac{\mathrm{d}u}{\mathrm{d} t}=0\tag{13}</script><p>对于绝热过程有<script type="math/tex">p=K\rho^\gamma</script>，其中<script type="math/tex">K</script>为常数。声速<script type="math/tex">c=\sqrt{\gamma RT}=\sqrt{\gamma p/\rho}=\sqrt{\gamma K}\rho^\frac{\gamma-1}{2}</script>，<script type="math/tex">\frac{\mathrm{d}c}{\mathrm{d}\rho}=\frac{\gamma-1}{2}\sqrt{\gamma K}\rho^\frac{\gamma-3}{2}=\frac{\gamma-1}{2}\frac{c}{\rho}</script>。因此，取</p>
+<script type="math/tex; mode=display">R=u+\frac{2c}{\gamma-1}\tag{14}</script><script type="math/tex; mode=display">\frac{\mathrm{d}R}{\mathrm{d}t}=\frac{\mathrm{d}u}{\mathrm{d}t}+\frac{2}{\gamma-1}\frac{\mathrm{d}c}{\mathrm{d}t}\frac{\mathrm{d}\rho}{\mathrm{d}t}=\frac{\mathrm{d}u}{\mathrm{d}t}+\frac{c}{\rho}\frac{\mathrm{d}\rho}{\mathrm{d}t}=0\tag{15}</script><p>在特征线<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=\lambda_1</script>上，有</p>
+<script type="math/tex; mode=display">R=u+\frac{2c}{\gamma-1}=const.\tag{16}</script><p>同理，在特征线<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=\lambda_2</script>上，有</p>
+<script type="math/tex; mode=display">S=-u+\frac{2c}{\gamma-1}=const.\tag{17}</script>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="cjzhccam40001rgtiz6ezsv14" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="cjzibxlrb000154tictxrty0x" class="article-share-link">Share</a>
       
       
     </footer>
