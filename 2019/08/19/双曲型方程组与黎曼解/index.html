@@ -5,19 +5,19 @@
   
 
   
-  <title>双曲型方程组与黎曼解 | TrueStr!ke&#39;s CFD Learning</title>
+  <title>双曲型方程组的间断 | TrueStr!ke&#39;s CFD Learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 特征向量矩阵   u x方向速度分量   p 压力                    双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf">
+  <meta name="description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 对角变换矩阵   u x方向速度分量   p 压力   c 声速   R,S Riemann不变量            1 双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+">
 <meta property="og:type" content="article">
-<meta property="og:title" content="双曲型方程组与黎曼解">
+<meta property="og:title" content="双曲型方程组的间断">
 <meta property="og:url" content="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/index.html">
 <meta property="og:site_name" content="TrueStr!ke&#39;s CFD Learning">
-<meta property="og:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 特征向量矩阵   u x方向速度分量   p 压力                    双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf">
+<meta property="og:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 对角变换矩阵   u x方向速度分量   p 压力   c 声速   R,S Riemann不变量            1 双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-08-19T11:41:48.550Z">
+<meta property="og:updated_time" content="2019-09-06T09:34:29.161Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="双曲型方程组与黎曼解">
-<meta name="twitter:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 特征向量矩阵   u x方向速度分量   p 压力                    双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf">
+<meta name="twitter:title" content="双曲型方程组的间断">
+<meta name="twitter:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 对角变换矩阵   u x方向速度分量   p 压力   c 声速   R,S Riemann不变量            1 双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+">
   
     <link rel="alternate" href="/atom.xml" title="TrueStr!ke&#39;s CFD Learning" type="application/atom+xml">
   
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      双曲型方程组与黎曼解
+      双曲型方程组的间断
     </h1>
   
 
@@ -110,7 +110,7 @@
 </tr>
 <tr>
 <td style="text-align:center"><script type="math/tex">\mathbf{S}</script></td>
-<td style="text-align:center">特征向量矩阵</td>
+<td style="text-align:center">对角变换矩阵</td>
 </tr>
 <tr>
 <td style="text-align:center"><script type="math/tex">u</script></td>
@@ -121,12 +121,12 @@
 <td style="text-align:center">压力</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center"><script type="math/tex">c</script></td>
+<td style="text-align:center">声速</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center"><script type="math/tex">R,S</script></td>
+<td style="text-align:center">Riemann不变量</td>
 </tr>
 <tr>
 <td style="text-align:center"></td>
@@ -138,14 +138,14 @@
 </tbody>
 </table>
 </div>
-<h2 id="双曲型方程组简介"><a href="#双曲型方程组简介" class="headerlink" title="双曲型方程组简介"></a>双曲型方程组简介</h2><p>对于形如</p>
+<h1 id="1-双曲型方程组简介"><a href="#1-双曲型方程组简介" class="headerlink" title="1 双曲型方程组简介"></a>1 双曲型方程组简介</h1><p>对于形如</p>
 <script type="math/tex; mode=display">\frac{\partial \mathbf{U}}{\partial t}+\mathbf{A}(\mathbf{U})\frac{\partial \mathbf{U}}{\partial x}=0\tag{1}</script><p>一类方程，如果矩阵<script type="math/tex">\mathbf{A}</script>可以被对角化，即<script type="math/tex">\mathbf{A}=\mathbf{S}^{-1}\mathbf{\Lambda}\mathbf{S}</script>，则称原方程是双曲型的。</p>
 <p>将方程(1)左乘<script type="math/tex">\mathbf{S}</script>，</p>
 <script type="math/tex; mode=display">\mathbf{S} \frac{\partial \mathbf{U}}{\partial t}+\mathbf{\Lambda}\mathbf{S}\frac{\partial \mathbf{U}}{\partial x}=0 \tag{2}</script><p>将矩阵<script type="math/tex">\mathbf{S}</script>写成行向量的形式</p>
 <script type="math/tex; mode=display">\left(\begin{matrix} \mathbf{s}_1 \\ \mathbf{s}_2 \\ \vdots\\\mathbf{s}_n     \end{matrix}\right) \frac{\partial \mathbf{U}}{\partial t}+\left(\begin{matrix} \lambda_1 &  & \\&\lambda_2\\&&\ddots\\&&&\lambda_n     \end{matrix}\right)\left(\begin{matrix} \mathbf{s}_1 \\ \mathbf{s}_2 \\ \vdots\\\mathbf{s}_n     \end{matrix}\right)\frac{\partial \mathbf{U}}{\partial x} =0 \tag{3}</script><p>将其写成分量形式</p>
 <script type="math/tex; mode=display">\mathbf{s}_k\cdot(\frac{\partial \mathbf{U}}{\partial t}+\lambda_k\frac{\partial \mathbf{U}}{\partial x}) =0\tag{4}</script><p>在<script type="math/tex">x-t</script>空间内引入特征线<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=\lambda_k</script>，在特征线上有</p>
 <script type="math/tex; mode=display">\frac{\mathrm{d}\mathbf{U}}{\mathrm{d}t}=\frac{\partial \mathbf{U}}{\partial t}+\lambda_k\frac{\partial \mathbf{U}}{\partial x} \tag{5}</script><p>原方程可以演化为沿特征线方向的常微分方程</p>
-<script type="math/tex; mode=display">\mathbf{s}_k\cdot\frac{\mathrm{d}\mathbf{U}}{\mathrm{d}t}=0\tag{6}</script><h1 id="一维均熵绝热流动"><a href="#一维均熵绝热流动" class="headerlink" title="一维均熵绝热流动"></a>一维均熵绝热流动</h1><p>不考虑粘性，流体微团运动过程中熵不变；如果来流熵均匀分布，则全流场熵均匀分布，能量方程可用熵为常数替代。其控制方程为</p>
+<script type="math/tex; mode=display">\mathbf{s}_k\cdot\frac{\mathrm{d}\mathbf{U}}{\mathrm{d}t}=0\tag{6}</script><h1 id="2-一维均熵绝热流动"><a href="#2-一维均熵绝热流动" class="headerlink" title="2 一维均熵绝热流动"></a>2 一维均熵绝热流动</h1><p>不考虑粘性，流体微团运动过程中熵不变；如果来流熵均匀分布，则全流场熵均匀分布，能量方程可用熵为常数替代。其控制方程为</p>
 <script type="math/tex; mode=display">\frac{\partial\rho}{\partial t}+\frac{\partial\rho u}{\partial x}=0  \tag{7}</script><script type="math/tex; mode=display">\frac{\partial\rho u}{\partial t}+\frac{\partial\left(\rho u^2 +p\right)}{\partial x}=0 \tag{8}</script><p>在绝热流动中有<script type="math/tex">\frac{\partial p}{\partial \rho}=c^2</script>，式(6)(7)可以写成</p>
 <script type="math/tex; mode=display">\frac{\partial\rho}{\partial t}+u\frac{\partial\rho }{\partial x}+\rho\frac{\partial u}{\partial x}=0  \tag9{}</script><script type="math/tex; mode=display">\frac{\partial u}{\partial t}+\frac{c^2}{\rho}\frac{\partial \rho}{\partial x}+u\frac{\partial u}{\partial x}=0 \tag{10}</script><p>参照式(1)，可以得到<script type="math/tex">\mathbf{U}=\left(\begin{matrix}\rho\\u\end{matrix}\right),\mathbf{A}=\left(\begin{matrix}u&\rho\\\frac{c^2}{\rho}&u\end{matrix}\right)</script></p>
 <p>可以得到矩阵<script type="math/tex">\mathbf{A}</script>的特征值<script type="math/tex">\lambda_{1,2}=u\pm c</script>，对角变换矩阵<script type="math/tex">\mathbf{S}=\left(\begin{matrix}c&\rho\\-c&\rho\end{matrix}\right)</script>，<script type="math/tex">\mathbf{S}^{-1}=\left(\begin{matrix}\frac{1}{2c}&-\frac{1}{2c}\\\frac{1}{2\rho}&\frac{1}{2\rho}\end{matrix}\right)</script>。将其代入式(2)，可以得到</p>
@@ -153,11 +153,23 @@
 <script type="math/tex; mode=display">\frac{\mathrm{d}\rho}{\mathrm{d}t}+\frac{\rho}{c}\frac{\mathrm{d}u}{\mathrm{d} t}=0\tag{13}</script><p>对于绝热过程有<script type="math/tex">p=K\rho^\gamma</script>，其中<script type="math/tex">K</script>为常数。声速<script type="math/tex">c=\sqrt{\gamma RT}=\sqrt{\gamma p/\rho}=\sqrt{\gamma K}\rho^\frac{\gamma-1}{2}</script>，<script type="math/tex">\frac{\mathrm{d}c}{\mathrm{d}\rho}=\frac{\gamma-1}{2}\sqrt{\gamma K}\rho^\frac{\gamma-3}{2}=\frac{\gamma-1}{2}\frac{c}{\rho}</script>。因此，取</p>
 <script type="math/tex; mode=display">R=u+\frac{2c}{\gamma-1}\tag{14}</script><script type="math/tex; mode=display">\frac{\mathrm{d}R}{\mathrm{d}t}=\frac{\mathrm{d}u}{\mathrm{d}t}+\frac{2}{\gamma-1}\frac{\mathrm{d}c}{\mathrm{d}t}\frac{\mathrm{d}\rho}{\mathrm{d}t}=\frac{\mathrm{d}u}{\mathrm{d}t}+\frac{c}{\rho}\frac{\mathrm{d}\rho}{\mathrm{d}t}=0\tag{15}</script><p>在特征线<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=\lambda_1</script>上，有</p>
 <script type="math/tex; mode=display">R=u+\frac{2c}{\gamma-1}=const.\tag{16}</script><p>同理，在特征线<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=\lambda_2</script>上，有</p>
-<script type="math/tex; mode=display">S=-u+\frac{2c}{\gamma-1}=const.\tag{17}</script>
+<script type="math/tex; mode=display">S=-u+\frac{2c}{\gamma-1}=const.\tag{17}</script><h1 id="3-双曲型方程的间断解"><a href="#3-双曲型方程的间断解" class="headerlink" title="3 双曲型方程的间断解"></a>3 双曲型方程的间断解</h1><h2 id="3-1-弱解"><a href="#3-1-弱解" class="headerlink" title="3.1 弱解"></a>3.1 弱解</h2><p>在双曲型方程中，扰动只能以有限速度传播，这可能导致间断的产生。间断可分为函数本身间断（强间断，如激波、接触间断）和导数间断（弱间断，如膨胀波的波头和波尾）。在间断处，导数不存在，这造成了微分方程的失效；然而，积分形式的方程仍然是适用的。</p>
+<p>在连续处满足微分方程(18)，而在间断处满足积分方程(19)的解，其中<script type="math/tex">V</script>为不连续的区域，称之为弱解。</p>
+<script type="math/tex; mode=display">\frac{\partial u}{\partial t}+\frac{\partial f(u)}{\partial t}=0 \tag{18}</script><script type="math/tex; mode=display">\iint_V\frac{\partial u}{\partial t}+\frac{\partial f(u)}{\partial t}\mathrm{d}x\mathrm{d}t=0\tag{19}</script><p>对式(19)应用Green公式，</p>
+<script type="math/tex; mode=display">\int_{\partial V}u\mathrm{d}x-f\mathrm{d}t=-(u^+-u^-)\Delta x+(f^+-f^-)\Delta t=0 \tag{20}</script><p>可以得到</p>
+<script type="math/tex; mode=display">\frac{f^+-f^-}{u^+-u^-}=\frac{\Delta x}{\Delta t}=\frac{\mathrm{d}x}{\mathrm{d}t}=\frac{[f]}{[u]}\tag{21}</script><p>式中，<script type="math/tex">x=x(t)</script>为间断的位置，此式为弱解的等价描述。为方便起见，记<script type="math/tex">[\psi]=\psi_+-\psi_-</script>为<script type="math/tex">\psi</script>越过间断<script type="math/tex">x=x(t)</script>的的跃度。将方程应用到流体力学基本方程(22)~(24)</p>
+<script type="math/tex; mode=display">\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho u)=0 \tag{22}</script><script type="math/tex; mode=display">\frac{\partial }{\partial t}(\rho u)+\frac{\partial}{\partial x}(\rho u^2+p)=\rho F \tag{23}</script><script type="math/tex; mode=display">\frac{\partial }{\partial t}(\rho e+\frac{1}{2}u^2)+\frac{\partial}{\partial x}((\rho e+\frac{1}{2}u^2+p)u)=\rho Fu \tag{24}</script><p>可以得到</p>
+<script type="math/tex; mode=display">[\rho]\frac{\mathrm{d}x}{\mathrm{d}t}=[\rho u] \tag{25}</script><script type="math/tex; mode=display">[\rho u]\frac{\mathrm{d}x}{\mathrm{d}t}=[\rho u^2+p] \tag{26}</script><script type="math/tex; mode=display">[\rho e+\frac{1}{2}\rho u^2]\frac{\mathrm{d}x}{\mathrm{d}t}=[(\rho e +\frac{1}{2}\rho u^2+p)u] \tag{27}</script><p>这些条件成为Rankine-Hugoniot条件。</p>
+<p>用下标“0”表示流体穿过激波前的状态，用下标“1”表示流体穿过激波后的状态。可以得到Hugoniot方程</p>
+<script type="math/tex; mode=display">H(\tau,p,\tau_0,p_0)=e-e_0+\frac{1}{2}(p_0+p)(\tau-\tau_0) \tag{28}</script><p>其中，<script type="math/tex">\tau=\frac{1}{\rho}</script>，<script type="math/tex">H(\tau,p,\tau_0,p_0)</script>称为Hugoniot函数。</p>
+<p>对于多方气体，有状态方程</p>
+<script type="math/tex; mode=display">e=\frac{1}{\gamma-1}p\tau \tag{29}</script><p>则式(28)可以转化为</p>
+<script type="math/tex; mode=display">2\mu^2H(\tau,p,\tau_0,p_0)=(\tau-\mu^2\tau_0)p-(\tau_0-\mu^2\tau)p_0 \tag{30}</script><p>其中</p>
+<h2 id="3-2-熵条件"><a href="#3-2-熵条件" class="headerlink" title="3.2 熵条件"></a>3.2 熵条件</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="cjzibxlrb000154tictxrty0x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="ck07xat7u0001q8tia2ekkdg4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +218,7 @@
       <ul>
         
           <li>
-            <a href="/2019/08/19/双曲型方程组与黎曼解/">双曲型方程组与黎曼解</a>
+            <a href="/2019/08/19/双曲型方程组与黎曼解/">双曲型方程组的间断</a>
           </li>
         
           <li>
