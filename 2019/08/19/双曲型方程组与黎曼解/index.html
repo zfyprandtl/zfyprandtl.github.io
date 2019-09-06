@@ -7,17 +7,26 @@
   
   <title>双曲型方程组的间断 | TrueStr!ke&#39;s CFD Learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 对角变换矩阵   u x方向速度分量   p 压力   c 声速   R,S Riemann不变量            1 双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+">
+  <meta name="description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 对角变换矩阵   c 声速   e 内能   p 压力   t 时间   u x方向速度分量   E 总能   H Hugoniot函数   R 左Riemann不变量或气体常数   S 右Riemann不变量   U 激波速度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="双曲型方程组的间断">
 <meta property="og:url" content="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/index.html">
 <meta property="og:site_name" content="TrueStr!ke&#39;s CFD Learning">
-<meta property="og:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 对角变换矩阵   u x方向速度分量   p 压力   c 声速   R,S Riemann不变量            1 双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+">
+<meta property="og:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 对角变换矩阵   c 声速   e 内能   p 压力   t 时间   u x方向速度分量   E 总能   H Hugoniot函数   R 左Riemann不变量或气体常数   S 右Riemann不变量   U 激波速度">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-09-06T09:34:29.161Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/06/nMfn6s.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/06/nMWbex.gif">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/06/nMWLTK.gif">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/06/nMWjYD.gif">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/06/nMW7O1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/06/nMXOWn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/06/nMXLJs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/06/nMjpeU.png">
+<meta property="og:updated_time" content="2019-09-06T13:52:23.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双曲型方程组的间断">
-<meta name="twitter:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 对角变换矩阵   u x方向速度分量   p 压力   c 声速   R,S Riemann不变量            1 双曲型方程组简介对于形如 \frac{\partial \mathbf{U}}{\partial t}+">
+<meta name="twitter:description" content="本篇博文将简要介绍双曲型方程组与黎曼解。 符号表    符号 含义     \mathbf{A} 系数矩阵   \mathbf{U} 速度矢量   \mathbf{S} 对角变换矩阵   c 声速   e 内能   p 压力   t 时间   u x方向速度分量   E 总能   H Hugoniot函数   R 左Riemann不变量或气体常数   S 右Riemann不变量   U 激波速度">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/06/nMfn6s.png">
   
     <link rel="alternate" href="/atom.xml" title="TrueStr!ke&#39;s CFD Learning" type="application/atom+xml">
   
@@ -113,27 +122,60 @@
 <td style="text-align:center">对角变换矩阵</td>
 </tr>
 <tr>
-<td style="text-align:center"><script type="math/tex">u</script></td>
-<td style="text-align:center"><script type="math/tex">x</script>方向速度分量</td>
+<td style="text-align:center"><script type="math/tex">c</script></td>
+<td style="text-align:center">声速</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">e</script></td>
+<td style="text-align:center">内能</td>
 </tr>
 <tr>
 <td style="text-align:center"><script type="math/tex">p</script></td>
 <td style="text-align:center">压力</td>
 </tr>
 <tr>
-<td style="text-align:center"><script type="math/tex">c</script></td>
-<td style="text-align:center">声速</td>
+<td style="text-align:center"><script type="math/tex">t</script></td>
+<td style="text-align:center">时间</td>
 </tr>
 <tr>
-<td style="text-align:center"><script type="math/tex">R,S</script></td>
-<td style="text-align:center">Riemann不变量</td>
+<td style="text-align:center"><script type="math/tex">u</script></td>
+<td style="text-align:center"><script type="math/tex">x</script>方向速度分量</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center"><script type="math/tex">E</script></td>
+<td style="text-align:center">总能</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center"><script type="math/tex">H</script></td>
+<td style="text-align:center">Hugoniot函数</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">R</script></td>
+<td style="text-align:center">左Riemann不变量或气体常数</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">S</script></td>
+<td style="text-align:center">右Riemann不变量</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">U</script></td>
+<td style="text-align:center">激波速度</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">\gamma</script></td>
+<td style="text-align:center">比热比（绝热指数）</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">\lambda</script></td>
+<td style="text-align:center">特征值</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">\rho</script></td>
+<td style="text-align:center">密度</td>
+</tr>
+<tr>
+<td style="text-align:center"><script type="math/tex">\tau</script></td>
+<td style="text-align:center">比容</td>
 </tr>
 </tbody>
 </table>
@@ -157,19 +199,59 @@
 <p>在连续处满足微分方程(18)，而在间断处满足积分方程(19)的解，其中<script type="math/tex">V</script>为不连续的区域，称之为弱解。</p>
 <script type="math/tex; mode=display">\frac{\partial u}{\partial t}+\frac{\partial f(u)}{\partial t}=0 \tag{18}</script><script type="math/tex; mode=display">\iint_V\frac{\partial u}{\partial t}+\frac{\partial f(u)}{\partial t}\mathrm{d}x\mathrm{d}t=0\tag{19}</script><p>对式(19)应用Green公式，</p>
 <script type="math/tex; mode=display">\int_{\partial V}u\mathrm{d}x-f\mathrm{d}t=-(u^+-u^-)\Delta x+(f^+-f^-)\Delta t=0 \tag{20}</script><p>可以得到</p>
-<script type="math/tex; mode=display">\frac{f^+-f^-}{u^+-u^-}=\frac{\Delta x}{\Delta t}=\frac{\mathrm{d}x}{\mathrm{d}t}=\frac{[f]}{[u]}\tag{21}</script><p>式中，<script type="math/tex">x=x(t)</script>为间断的位置，此式为弱解的等价描述。为方便起见，记<script type="math/tex">[\psi]=\psi_+-\psi_-</script>为<script type="math/tex">\psi</script>越过间断<script type="math/tex">x=x(t)</script>的的跃度。将方程应用到流体力学基本方程(22)~(24)</p>
-<script type="math/tex; mode=display">\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho u)=0 \tag{22}</script><script type="math/tex; mode=display">\frac{\partial }{\partial t}(\rho u)+\frac{\partial}{\partial x}(\rho u^2+p)=\rho F \tag{23}</script><script type="math/tex; mode=display">\frac{\partial }{\partial t}(\rho e+\frac{1}{2}u^2)+\frac{\partial}{\partial x}((\rho e+\frac{1}{2}u^2+p)u)=\rho Fu \tag{24}</script><p>可以得到</p>
+<script type="math/tex; mode=display">\frac{f^+-f^-}{u^+-u^-}=\frac{\Delta x}{\Delta t}=\frac{\mathrm{d}x}{\mathrm{d}t}=\frac{[f]}{[u]}\tag{21}</script><p>式中，<script type="math/tex">x=x(t)</script>为间断的位置，此式为弱解的等价描述。为方便起见，记<script type="math/tex">[\psi]=\psi_+-\psi_-</script>为<script type="math/tex">\psi</script>越过间断<script type="math/tex">x=x(t)</script>的的跃度。将方程应用到一维流体力学基本方程(22)~(24)</p>
+<script type="math/tex; mode=display">\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho u)=0 \tag{22}</script><script type="math/tex; mode=display">\frac{\partial }{\partial t}(\rho u)+\frac{\partial}{\partial x}(\rho u^2+p)=\rho F \tag{23}</script><script type="math/tex; mode=display">\frac{\partial }{\partial t}(\rho e+\frac{1}{2}\rho u^2)+\frac{\partial}{\partial x}((\rho e+\frac{1}{2}\rho u^2+p)u)=\rho Fu \tag{24}</script><p>可以得到</p>
 <script type="math/tex; mode=display">[\rho]\frac{\mathrm{d}x}{\mathrm{d}t}=[\rho u] \tag{25}</script><script type="math/tex; mode=display">[\rho u]\frac{\mathrm{d}x}{\mathrm{d}t}=[\rho u^2+p] \tag{26}</script><script type="math/tex; mode=display">[\rho e+\frac{1}{2}\rho u^2]\frac{\mathrm{d}x}{\mathrm{d}t}=[(\rho e +\frac{1}{2}\rho u^2+p)u] \tag{27}</script><p>这些条件成为Rankine-Hugoniot条件。</p>
 <p>用下标“0”表示流体穿过激波前的状态，用下标“1”表示流体穿过激波后的状态。可以得到Hugoniot方程</p>
 <script type="math/tex; mode=display">H(\tau,p,\tau_0,p_0)=e-e_0+\frac{1}{2}(p_0+p)(\tau-\tau_0) \tag{28}</script><p>其中，<script type="math/tex">\tau=\frac{1}{\rho}</script>，<script type="math/tex">H(\tau,p,\tau_0,p_0)</script>称为Hugoniot函数。</p>
 <p>对于多方气体，有状态方程</p>
 <script type="math/tex; mode=display">e=\frac{1}{\gamma-1}p\tau \tag{29}</script><p>则式(28)可以转化为</p>
-<script type="math/tex; mode=display">2\mu^2H(\tau,p,\tau_0,p_0)=(\tau-\mu^2\tau_0)p-(\tau_0-\mu^2\tau)p_0 \tag{30}</script><p>其中</p>
-<h2 id="3-2-熵条件"><a href="#3-2-熵条件" class="headerlink" title="3.2 熵条件"></a>3.2 熵条件</h2>
+<script type="math/tex; mode=display">2\mu^2H(\tau,p,\tau_0,p_0)=(\tau-\mu^2\tau_0)p-(\tau_0-\mu^2\tau)p_0 \tag{30}</script><p>其中<script type="math/tex">\mu=\frac{\gamma-1}{\gamma+1}</script>。</p>
+<h2 id="3-2-熵条件"><a href="#3-2-熵条件" class="headerlink" title="3.2 熵条件"></a>3.2 熵条件</h2><p>由于Hugoniot方程与<script type="math/tex">p_1\tau_1^{-\gamma}=p_0\tau_0^{-\gamma}</script>不重合，所以流体越过激波不可能是绝热过程，在越过激波后流体的熵应该增加。</p>
+<p>考虑流体力学基本方程(22)~(24)，其特征方程的根为</p>
+<script type="math/tex; mode=display">\lambda_1=u-c,  \lambda_2=u,\lambda_3=u+c \tag{31}</script><p>P.D.Lax提出熵条件：在激波间断的两侧，成立</p>
+<script type="math/tex; mode=display">\lambda_k(u_+,c_+)<U<\lambda_k(u_-,c_-) \tag{32}</script><script type="math/tex; mode=display">\lambda_{k-1}(u_-,c_-)<U<\lambda_{k+1}(u_+,c_+) \tag{33}</script><p>对于多方气体，熵条件有以下等价表述：</p>
+<ul>
+<li>流体越过激波后压力增大。</li>
+<li>流体越过激波后熵增加。</li>
+<li>流体越过激波后速度增大。</li>
+</ul>
+<h1 id="Riemann问题精确解（以SOD激波管为例）"><a href="#Riemann问题精确解（以SOD激波管为例）" class="headerlink" title="Riemann问题精确解（以SOD激波管为例）"></a>Riemann问题精确解（以SOD激波管为例）</h1><p>SOD激波管属于典型的Riemann问题，如图所示，左侧为高温高压气体，右侧为低温低压气体，中间用薄膜隔开。在<script type="math/tex">t=0</script>时刻，突然撤去薄膜，分析激波管中的运动情况。</p>
+<p><img src="https://s2.ax1x.com/2019/09/06/nMfn6s.png" alt="1567764223218"></p>
+<p>下图分别为SOD激波管的密度，压力，速度分布情况。</p>
+<p><img src="https://s2.ax1x.com/2019/09/06/nMWbex.gif" alt="density"></p>
+<p><img src="https://s2.ax1x.com/2019/09/06/nMWLTK.gif" alt="pressure"></p>
+<p><img src="https://s2.ax1x.com/2019/09/06/nMWjYD.gif" alt="velocity"></p>
+<p>如图所示，在<script type="math/tex">t>0</script>时刻，一激波（区域2、4之间）向右传播，一膨胀波（区域5）向左传播，区域3、4之间有一接触间断（仅密度突变，两侧速度、压力相同）。</p>
+<p><img src="https://s2.ax1x.com/2019/09/06/nMW7O1.png" alt="1567766882795"></p>
+<p>此问题的控制方程为一维流体力学基本方程(22)~(24)</p>
+<script type="math/tex; mode=display">\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho u)=0 \tag{22}</script><script type="math/tex; mode=display">\frac{\partial }{\partial t}(\rho u)+\frac{\partial}{\partial x}(\rho u^2+p)=0 \tag{23}</script><script type="math/tex; mode=display">\frac{\partial }{\partial t}(\rho e+\frac{1}{2}\rho u^2)+\frac{\partial}{\partial x}((\rho e+\frac{1}{2}\rho u^2+p)u)=0 \tag{24}</script><p>对于激波，有间断条件</p>
+<script type="math/tex; mode=display">\rho_2(u_2-U_2)=\rho^{*R}(u^*-U_2) \tag{34}</script><script type="math/tex; mode=display">\rho_2u_2(u_2-U_2)+p_2=\rho^{*R}u^*(u^*-U_2)+p^* \tag{35}</script><script type="math/tex; mode=display">E_2(u_2-U_2)+p_2u_2=E^{*R}(u^*-U_2)+p^*u^* \tag{36}</script><p>其中，<script type="math/tex">U</script>为激波运动速度，<script type="math/tex">E=e+\frac{1}{2}u^2</script>为总能。</p>
+<p>可以导出</p>
+<script type="math/tex; mode=display">u^*=u_2+\frac{p^*-p_2}{\rho_2c_2\sqrt{\frac{\gamma+1}{2\gamma}\frac{p^*}{p_2}+\frac{\gamma-1}{2\gamma}}} \tag{37}</script><p>对于膨胀波，有绝热条件与Riemann不变量条件</p>
+<script type="math/tex; mode=display">\frac{p^*}{(\rho^{*L})^\gamma}=\frac{p_1}{(\rho_1)^\gamma} \tag{38}</script><script type="math/tex; mode=display">u_1+\frac{2c_1}{\gamma-1}=u^*+\frac{2c^{*L}}{\gamma-1} , (c^{*L}=\sqrt{\gamma \frac{p^*}{\rho^{*L}}})\tag{39}</script><p>可以导出</p>
+<script type="math/tex; mode=display">u^*=u_1-\frac{2c_1}{\gamma-1}\left[\left(\frac{p^*}{p_1}\right)^{\frac{\gamma-1}{2\gamma}}-1\right] \tag{40}</script><p>激波、膨胀波前后的速度—压力关系式可以写成统一的形式</p>
+<p>左波</p>
+<script type="math/tex; mode=display">u^*=u_1-f(p^*,p_1,\rho_1) \tag{41}</script><p>右波</p>
+<script type="math/tex; mode=display">u^*=u_2+f(p^*,p_2,\rho_2) \tag{42}</script><p>其中，</p>
+<script type="math/tex; mode=display">f(p^*,p_i,\rho_i)=\left\{
+\begin{aligned}
+&\frac{p^*-p_i}{\rho_ic_i\sqrt{\frac{\gamma+1}{2\gamma}\frac{p^*}{p_i}+\frac{\gamma-1}{2\gamma}}}& 激波 \\
+&\frac{2c_i}{\gamma-1}\left[\left(\frac{p^*}{p_i}\right)^{\frac{\gamma-1}{2\gamma}}-1\right] & 膨胀波
+\end{aligned} \tag{43}
+\right.</script><p>得到方程</p>
+<script type="math/tex; mode=display">u_1-u_2=f(p^*,p_1,\rho_1)+f(p^*,p_2,\rho_2) \tag{44}</script><p>求解方程(44)可以得到<script type="math/tex">p^*</script>，进而可以根据式(41)或(42)计算得到<script type="math/tex">u^*</script>，将其代入式(34)~(36)就可以求得其他未知量。</p>
+<p>对于膨胀波，其波头的传播速度为<script type="math/tex">u_1-c_1</script>，其波尾的传播速度为<script type="math/tex">u^*-c^{*L}</script>。在膨胀波内部，特征线由<script type="math/tex">x=0,t=0</script>出发，特征线方程为<script type="math/tex">\frac{\mathrm{d}x}{\mathrm{d}t}=u-c</script>；再利用Riemann不变量$%<script type="math/tex">$u+\frac{2c}{\gamma-1}=u_1+\frac{2c_1}{\gamma-1}</script>，可解得</p>
+<script type="math/tex; mode=display">c(x,t)=\frac{\gamma-1}{\gamma+1}(u_1-\frac{x}{t})+\frac{2}{\gamma+1}c_1 \tag{44}</script><script type="math/tex; mode=display">u(x,t)=c+\frac{u}{t} \tag{45}</script><p>再利用绝热关系式，求出</p>
+<script type="math/tex; mode=display">p=p_1\left(\frac{c}{c_1}\right)^\frac{2\gamma}{\gamma-1}\tag{45}</script><script type="math/tex; mode=display">\rho=\frac{\gamma \rho }{c^2}\tag{46}</script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">clear;close;clc;</span><br><span class="line">%% 本程序求解SOD激波管的Riemann解析解</span><br><span class="line">t=0.14</span><br><span class="line">u1=0</span><br><span class="line">p1=1</span><br><span class="line">rho1=1</span><br><span class="line">u2=0</span><br><span class="line">p2=0.125</span><br><span class="line">rho2=0.1</span><br><span class="line">gamma=1.4</span><br><span class="line">c1=sqrt(gamma*p1/rho1)</span><br><span class="line">c2=sqrt(gamma*p2/rho2)</span><br><span class="line">%% 压力</span><br><span class="line">f1=@(p_)(p_-p2)/(rho2*c2*sqrt((gamma+1)/(2*gamma)*(p_/p2)+(gamma-1)/(2*gamma))) %右激波</span><br><span class="line">f2=@(p_)2*c1/(gamma-1)*((p_/p1)^((gamma-1)/(2*gamma))-1) %左稀疏波</span><br><span class="line">eqn1=@(p_)f1(p_)+f2(p_)-(u1-u2)</span><br><span class="line">p_=fsolve(eqn1,(p1+p2)/2)</span><br><span class="line">u_=u1+f1(p_)</span><br><span class="line">%% 间断内部（激波与稀疏波波尾之间）</span><br><span class="line">eqn2=@(x)[rho2*(u2-x(2))-x(1)*(u_-x(2));rho2*u2*(u2-x(2))+p2-x(1)*u_*(u_-x(2))-p_]</span><br><span class="line">sol=fsolve(eqn2,[rho1,c2])</span><br><span class="line">rho_R=sol(1);</span><br><span class="line">Z2=sol(2);</span><br><span class="line">rho_L=rho1*(p_/p1)^(1/gamma)</span><br><span class="line">c_L=sqrt(gamma*p_/rho_L)</span><br><span class="line">%% 稀疏波内部</span><br><span class="line">c_e=@(x,t) (gamma-1)/(gamma+1)*(u1-x/t)+2/(gamma+1)*c1 ;</span><br><span class="line">u_e=@(x,t) c_e(x,t)+x/t ;</span><br><span class="line">p_e=@(x,t) p1*(c_e(x,t)/c1)^(2*gamma/(gamma-1));</span><br><span class="line">rho_e=@(x,t)  gamma*p_e(x,t)/c_e(x,t)^2;</span><br><span class="line">%% SOD</span><br><span class="line">nx=1e4+1</span><br><span class="line">x=linspace(-1,1,nx)</span><br><span class="line">p_solve=zeros(size(x))</span><br><span class="line">u_solve=zeros(size(x))</span><br><span class="line">rho_solve=zeros(size(x))</span><br><span class="line">for i=1:nx</span><br><span class="line">    if x(i)&lt;(u1-c1)*t</span><br><span class="line">        p_solve(i)=p1;</span><br><span class="line">        u_solve(i)=u1;</span><br><span class="line">        rho_solve(i)=rho1;</span><br><span class="line">    elseif x(i)&lt;(u_-c_L)*t</span><br><span class="line">        p_solve(i)=p_e(x(i),t);</span><br><span class="line">        u_solve(i)=u_e(x(i),t);</span><br><span class="line">        rho_solve(i)=rho_e(x(i),t);</span><br><span class="line">    elseif x(i)&lt;u_*t</span><br><span class="line">        p_solve(i)=p_;</span><br><span class="line">        u_solve(i)=u_;</span><br><span class="line">        rho_solve(i)=rho_L;</span><br><span class="line">    elseif x(i)&lt;=Z2*t</span><br><span class="line">        p_solve(i)=p_;</span><br><span class="line">        u_solve(i)=u_;</span><br><span class="line">        rho_solve(i)=rho_R;</span><br><span class="line">    else</span><br><span class="line">        p_solve(i)=p2;</span><br><span class="line">        u_solve(i)=u2;</span><br><span class="line">        rho_solve(i)=rho2;</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">figure(1)</span><br><span class="line">plot(x,p_solve)</span><br><span class="line">figure(2)</span><br><span class="line">plot(x,u_solve)</span><br><span class="line">figure(3)</span><br><span class="line">plot(x,rho_solve)</span><br></pre></td></tr></table></figure>
+<p>下图为利用此程序计算出的压力、速度、密度分布。</p>
+<p><img src="https://s2.ax1x.com/2019/09/06/nMXOWn.png" alt="myp"><img src="https://s2.ax1x.com/2019/09/06/nMXLJs.png" alt="myrho"></p>
+<p><img src="https://s2.ax1x.com/2019/09/06/nMjpeU.png" alt="myrho"></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="ck07xat7u0001q8tia2ekkdg4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/19/双曲型方程组与黎曼解/" data-id="ck086immq0001hctizsjqu1d2" class="article-share-link">Share</a>
       
       
     </footer>
