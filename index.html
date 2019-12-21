@@ -66,6 +66,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-QR分解求解线性方程组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/22/QR分解求解线性方程组/" class="article-date">
+  <time datetime="2019-12-21T16:00:00.000Z" itemprop="datePublished">2019-12-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/22/QR分解求解线性方程组/">QR分解求解线性方程组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QR分解"><a href="#QR分解" class="headerlink" title="QR分解"></a>QR分解</h1><p>任何一个满秩矩阵<script type="math/tex">A</script>，都可以唯一地分解为<script type="math/tex">A=QR</script>，其中<script type="math/tex">Q</script>为正交矩阵，<script type="math/tex">R</script>为具有正对角元的上三角矩阵。</p>
+<h1 id="Householder变换"><a href="#Householder变换" class="headerlink" title="Householder变换"></a>Householder变换</h1><p>给定单位向量<script type="math/tex">u</script>，<script type="math/tex">H=I-2uu^T</script>为Householder变换算子。Householder变换有明显的几何意义，对于式<script type="math/tex">Ha=b</script>，将向量<script type="math/tex">a</script>映射称以<script type="math/tex">u</script>为法向量的平面的对称向量<script type="math/tex">b</script>。</p>
+<p>性质：<script type="math/tex">H</script>为自逆矩阵。</p>
+<script type="math/tex; mode=display">HH=(I-2uu^T)(I-2uu^T)=I-4uu^T+4uu^Tuu^T=I-4uu^T+4u(u^Tu)u^T=I</script><h1 id="利用Householder计算QR分解"><a href="#利用Householder计算QR分解" class="headerlink" title="利用Householder计算QR分解"></a>利用Householder计算QR分解</h1><p>考虑<script type="math/tex">A\in R^{n\times n}</script></p>
+<script type="math/tex; mode=display">A=(a_1,a_2,\cdots,a_n)</script><p>取<script type="math/tex">u_1=\frac{a_1-\left||a_1 \right||_2e_1}{\left||a_1-\left||a_1 \right||_2e_1\right||_2}</script></p>
+<script type="math/tex; mode=display">H_1=I-2u_1u^T_1</script><script type="math/tex; mode=display">H_1A=(H_1a_1,H_1a_2,\cdots,H_1a_n)=\left[\begin{matrix}\left||a_1 \right||&*&\cdots&*\\0&\\0&&B\\0\end{matrix}\right]</script><p>再将<script type="math/tex">B\in R^{(n-1)\times (n-1)}</script></p>
+<script type="math/tex; mode=display">B=(b_1,b_2,\cdots,b_n)</script><p>取<script type="math/tex">u_2=\frac{b_1-\left||b_1 \right||_2e_1}{\left||b_1-\left||b_1 \right||_2e_1\right||_2}</script></p>
+<script type="math/tex; mode=display">\hat H_2=I-2u_2u^T_2</script><script type="math/tex; mode=display">H_2=\left[\begin{matrix}1&0&\cdots&0\\0&\\0&&\hat H_2\\0\end{matrix}\right]</script><script type="math/tex; mode=display">H_2H_1A=\left[\begin{matrix}\left||a_1 \right||&*&\cdots&\cdots&*\\0&\left||a_2 \right||&*&\cdots&*\\0&0\\0&0&&C\\0&0\end{matrix}\right]</script><p>依次进行，可以得到</p>
+<script type="math/tex; mode=display">H_{n-1}\cdots H_2H_1A=\left[\begin{matrix}\left||a_1 \right||&*&*&*\\&\left||a_2 \right||&*&*\\&&\ddots&*\\&&&\left||a_n \right|| \end{matrix}\right]=R</script><script type="math/tex; mode=display">H$$为自逆矩阵，令$$Q=H_1H_2\cdots H_{n-1}</script><script type="math/tex; mode=display">A=QR</script><h1 id="利用QR分解求解线性方程组"><a href="#利用QR分解求解线性方程组" class="headerlink" title="利用QR分解求解线性方程组"></a>利用QR分解求解线性方程组</h1><script type="math/tex; mode=display">Ax=b</script><script type="math/tex; mode=display">Rx=Q^{-1}b</script><p><script type="math/tex">Q^{-1}</script>已于前一节求出，<script type="math/tex">R</script>为上三角矩阵，故此方程组很好求解。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/22/QR分解求解线性方程组/" data-id="ck4fpzt4l00006stiaoeb6xcp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-几个用于计算差分格式系数的MATLAB程序" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/09/09/几个用于计算差分格式系数的MATLAB程序/" class="article-date">
@@ -89,18 +134,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本篇博文将介绍几种简单的差分格式。</p>
-<h1 id="1-古典差分格式"><a href="#1-古典差分格式" class="headerlink" title="1 古典差分格式"></a>1 古典差分格式</h1><p>古典差分格式可通过Taylor展开方法获得，如已知<script type="math/tex">f_{i-1},f_{i},f_{i+i}</script>，要计算<script type="math/tex">\left(\frac{\partial f}{\partial x}\right)_i,\left(\frac{\partial^2 f}{\partial x^2}\right)_i</script>，只需在<script type="math/tex">x_{i-1},x_{i},x_{i+i}</script>进行Taylor展开，</p>
+<h1 id="1-古典差分格式"><a href="#1-古典差分格式" class="headerlink" title="1 古典差分格式"></a>1 古典差分格式</h1><p>古典差分格式可通过Taylor展开方法获得。如已知<script type="math/tex">f_{i-1},f_{i},f_{i+i}</script>，要计算<script type="math/tex">\left(\frac{\partial f}{\partial x}\right)_i,\left(\frac{\partial^2 f}{\partial x^2}\right)_i</script>，只需在<script type="math/tex">x_{i-1},x_{i},x_{i+i}</script>进行Taylor展开，</p>
 <script type="math/tex; mode=display">f_{i-1}=f_i+\left(\frac{\partial f}{\partial x}\right)_i(-\Delta x)+\frac{1}{2!}\left(\frac{\partial^2 f}{\partial x^2}\right)_i(-\Delta x)^2+O{(-\Delta x)^3}</script><script type="math/tex; mode=display">f_{i+1}=f_i+\left(\frac{\partial f}{\partial x}\right)_i(\Delta x)+\frac{1}{2!}\left(\frac{\partial^2 f}{\partial x^2}\right)_i(\Delta x)^2+O{(\Delta x)^3}</script><p>即</p>
 <script type="math/tex; mode=display">\left(\begin{matrix} f_{i-1}\\f_i\\f_{i+1} \end{matrix}\right)=\left(\begin{matrix} 1&-\Delta x&\frac{1}{2!}(-\Delta x)^2\\1&0&0\\1&\Delta x&\frac{1}{2!}\Delta x^2 \end{matrix}\right) \left(\begin{matrix} f_{i}\\\left(\frac{\partial f}{\partial x}\right)_i\\ \left(\frac{\partial^2 f}{\partial x^2}\right)_i \end{matrix}\right)</script><script type="math/tex; mode=display">\left(\begin{matrix} f_{i}\\\left(\frac{\partial f}{\partial x}\right)_i\\ \left(\frac{\partial^2 f}{\partial x^2}\right)_i \end{matrix}\right)=\left(\begin{matrix} 1&-\Delta x&\frac{1}{2!}(-\Delta x)^2\\1&0&0\\1&\Delta x&\frac{1}{2!}(\Delta x)^2 \end{matrix}\right)^{-1}\left(\begin{matrix} f_{i-1}\\f_i\\f_{i+1} \end{matrix}\right)=\left(\begin{matrix} 0&1&0\\-\frac{1}{2}\Delta x&0&\frac{1}{2}\Delta x\\\frac{1}{\Delta x^2}&-\frac{2}{\Delta x^2}&\frac{1}{\Delta x^2} \end{matrix}\right)\left(\begin{matrix} f_{i-1}\\f_i\\f_{i+1} \end{matrix}\right)</script><p>即</p>
 <script type="math/tex; mode=display">\left(\frac{\partial f}{\partial x}\right)_i=\frac{f_{i+1}-f_{i-1}}{2\Delta x}</script><script type="math/tex; mode=display">\left(\frac{\partial^2 f}{\partial x^2}\right)_i=\frac{f_{i+1}-2f_{i}+f_{i-1}}{\Delta x^2}</script><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% DiffScheme.m </span></span><br><span class="line"><span class="comment">%% 用于计算古典差分格式的小程序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">res</span>=<span class="title">DiffScheme</span><span class="params">(start,len,order)</span></span></span><br><span class="line">temp=<span class="built_in">bsxfun</span>(@power,[start:start+len<span class="number">-1</span>]',[<span class="number">0</span>:len<span class="number">-1</span>]);</span><br><span class="line">temp2=<span class="built_in">bsxfun</span>(@rdivide,temp,[<span class="built_in">gamma</span>(<span class="number">1</span>:len)]);</span><br><span class="line">temp3=inv(temp2);</span><br><span class="line">res=temp3(order+<span class="number">1</span>,:);</span><br></pre></td></tr></table></figure>
 <p>start为模版的初始位置，len为模版的长度，order为求导的阶数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; DiffScheme(-1,3,1)</span><br><span class="line">ans =</span><br><span class="line">   -0.5000         0    0.5000</span><br><span class="line">   </span><br><span class="line">&gt;&gt; DiffScheme(-1,3,2)</span><br><span class="line">ans =</span><br><span class="line">     1    -2     1</span><br><span class="line">     </span><br><span class="line">&gt;&gt; DiffScheme(-2,6,1)</span><br><span class="line">ans =</span><br><span class="line">    0.0500   -0.5000   -0.3333    1.0000   -0.2500    0.0333</span><br></pre></td></tr></table></figure>
-<h1 id="2-Pade型紧致（Compact）差分格式"><a href="#2-Pade型紧致（Compact）差分格式" class="headerlink" title="2 Pade型紧致（Compact）差分格式"></a>2 Pade型紧致（Compact）差分格式</h1><p>待续<script type="math/tex">\cdots</script></p>
+<h1 id="2-紧致差分格式"><a href="#2-紧致差分格式" class="headerlink" title="2 紧致差分格式"></a>2 紧致差分格式</h1><h2 id="2-1-对称性紧致差分格式"><a href="#2-1-对称性紧致差分格式" class="headerlink" title="2.1 对称性紧致差分格式"></a>2.1 对称性紧致差分格式</h2><p>对称性紧致差分格式的一般形式为</p>
+<script type="math/tex; mode=display">\Delta x\sum_{m\geqslant0}\frac{1}{2}\alpha_m\left[\left( \frac{\partial f}{\partial x}\right)_{j+m}+\left( \frac{\partial f}{\partial x}\right)_{j-n}\right]=\sum_{n>0}\frac{1}{2n}\beta_n\left(f_{j+n}-f_{j-n}\right)</script><script type="math/tex; mode=display">
+\Delta x\sum_{m\geqslant0}\frac{1}{2}\alpha_m\left[\left( \frac{\partial f}{\partial x}\right)_{j+m}+\left( \frac{\partial f}{\partial x}\right)_{j-n}\right]=\sum_{n>0}\frac{1}{2n}\beta_n\left(f_{j+n}-f_{j-n}\right)</script><p>可以利用Taylor展开，令方程两侧对应系数相等，可以得到一组代数方程，求解代数方程就可确定系数。</p>
+<p>如<script type="math/tex">m=0,1</script>且<script type="math/tex">n=1,2</script>时</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/09/几个用于计算差分格式系数的MATLAB程序/" data-id="ck0ap265u00012ctifxd7lbaa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/09/几个用于计算差分格式系数的MATLAB程序/" data-id="ck4fpzt4v00016stiafxswvqo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/07/双曲型方程组与黎曼解/" data-id="ck0ap266c00022ctipa2fgk76" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/07/双曲型方程组与黎曼解/" data-id="ck4fpzt5200026sti51z8txsm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/19/hello-world/" data-id="ck0ap265n00002ctip32phmwz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/19/hello-world/" data-id="ck4fpzt5m00036sti5jq7m7ka" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +401,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
     </div>
   </div>
 
@@ -364,6 +412,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/12/22/QR分解求解线性方程组/">QR分解求解线性方程组</a>
+          </li>
         
           <li>
             <a href="/2019/09/09/几个用于计算差分格式系数的MATLAB程序/">几个用于计算差分格式系数的MATLAB程序</a>
@@ -416,22 +468,5 @@
 
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>

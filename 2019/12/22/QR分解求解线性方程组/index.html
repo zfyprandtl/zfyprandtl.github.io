@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>QR分解求解线性方程组 | TrueStr!ke&#39;s CFD Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="QR分解任何一个满秩矩阵A，都可以唯一地分解为A=QR，其中Q为正交矩阵，R为具有正对角元的上三角矩阵。 Householder变换给定单位向量u，H=I-2uu^T为Householder变换算子。Householder变换有明显的几何意义，对于式Ha=b，将向量a映射称以u为法向量的平面的对称向量b。 性质：H为自逆矩阵。 HH=(I-2uu^T)(I-2uu^T)=I-4uu^T+4uu^T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QR分解求解线性方程组">
+<meta property="og:url" content="http://yoursite.com/2019/12/22/QR分解求解线性方程组/index.html">
+<meta property="og:site_name" content="TrueStr!ke&#39;s CFD Learning">
+<meta property="og:description" content="QR分解任何一个满秩矩阵A，都可以唯一地分解为A=QR，其中Q为正交矩阵，R为具有正对角元的上三角矩阵。 Householder变换给定单位向量u，H=I-2uu^T为Householder变换算子。Householder变换有明显的几何意义，对于式Ha=b，将向量a映射称以u为法向量的平面的对称向量b。 性质：H为自逆矩阵。 HH=(I-2uu^T)(I-2uu^T)=I-4uu^T+4uu^T">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-12-21T15:09:49.905Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="QR分解求解线性方程组">
+<meta name="twitter:description" content="QR分解任何一个满秩矩阵A，都可以唯一地分解为A=QR，其中Q为正交矩阵，R为具有正对角元的上三角矩阵。 Householder变换给定单位向量u，H=I-2uu^T为Householder变换算子。Householder变换有明显的几何意义，对于式Ha=b，将向量a映射称以u为法向量的平面的对称向量b。 性质：H为自逆矩阵。 HH=(I-2uu^T)(I-2uu^T)=I-4uu^T+4uu^T">
+  
+    <link rel="alternate" href="/atom.xml" title="TrueStr!ke&#39;s CFD Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">TrueStr!ke&#39;s CFD Learning</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Flow never stops.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-QR分解求解线性方程组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/22/QR分解求解线性方程组/" class="article-date">
+  <time datetime="2019-12-21T16:00:00.000Z" itemprop="datePublished">2019-12-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      QR分解求解线性方程组
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QR分解"><a href="#QR分解" class="headerlink" title="QR分解"></a>QR分解</h1><p>任何一个满秩矩阵<script type="math/tex">A</script>，都可以唯一地分解为<script type="math/tex">A=QR</script>，其中<script type="math/tex">Q</script>为正交矩阵，<script type="math/tex">R</script>为具有正对角元的上三角矩阵。</p>
+<h1 id="Householder变换"><a href="#Householder变换" class="headerlink" title="Householder变换"></a>Householder变换</h1><p>给定单位向量<script type="math/tex">u</script>，<script type="math/tex">H=I-2uu^T</script>为Householder变换算子。Householder变换有明显的几何意义，对于式<script type="math/tex">Ha=b</script>，将向量<script type="math/tex">a</script>映射称以<script type="math/tex">u</script>为法向量的平面的对称向量<script type="math/tex">b</script>。</p>
+<p>性质：<script type="math/tex">H</script>为自逆矩阵。</p>
+<script type="math/tex; mode=display">HH=(I-2uu^T)(I-2uu^T)=I-4uu^T+4uu^Tuu^T=I-4uu^T+4u(u^Tu)u^T=I</script><h1 id="利用Householder计算QR分解"><a href="#利用Householder计算QR分解" class="headerlink" title="利用Householder计算QR分解"></a>利用Householder计算QR分解</h1><p>考虑<script type="math/tex">A\in R^{n\times n}</script></p>
+<script type="math/tex; mode=display">A=(a_1,a_2,\cdots,a_n)</script><p>取<script type="math/tex">u_1=\frac{a_1-\left||a_1 \right||_2e_1}{\left||a_1-\left||a_1 \right||_2e_1\right||_2}</script></p>
+<script type="math/tex; mode=display">H_1=I-2u_1u^T_1</script><script type="math/tex; mode=display">H_1A=(H_1a_1,H_1a_2,\cdots,H_1a_n)=\left[\begin{matrix}\left||a_1 \right||&*&\cdots&*\\0&\\0&&B\\0\end{matrix}\right]</script><p>再将<script type="math/tex">B\in R^{(n-1)\times (n-1)}</script></p>
+<script type="math/tex; mode=display">B=(b_1,b_2,\cdots,b_n)</script><p>取<script type="math/tex">u_2=\frac{b_1-\left||b_1 \right||_2e_1}{\left||b_1-\left||b_1 \right||_2e_1\right||_2}</script></p>
+<script type="math/tex; mode=display">\hat H_2=I-2u_2u^T_2</script><script type="math/tex; mode=display">H_2=\left[\begin{matrix}1&0&\cdots&0\\0&\\0&&\hat H_2\\0\end{matrix}\right]</script><script type="math/tex; mode=display">H_2H_1A=\left[\begin{matrix}\left||a_1 \right||&*&\cdots&\cdots&*\\0&\left||a_2 \right||&*&\cdots&*\\0&0\\0&0&&C\\0&0\end{matrix}\right]</script><p>依次进行，可以得到</p>
+<script type="math/tex; mode=display">H_{n-1}\cdots H_2H_1A=\left[\begin{matrix}\left||a_1 \right||&*&*&*\\&\left||a_2 \right||&*&*\\&&\ddots&*\\&&&\left||a_n \right|| \end{matrix}\right]=R</script><script type="math/tex; mode=display">H$$为自逆矩阵，令$$Q=H_1H_2\cdots H_{n-1}</script><script type="math/tex; mode=display">A=QR</script><h1 id="利用QR分解求解线性方程组"><a href="#利用QR分解求解线性方程组" class="headerlink" title="利用QR分解求解线性方程组"></a>利用QR分解求解线性方程组</h1><script type="math/tex; mode=display">Ax=b</script><script type="math/tex; mode=display">Rx=Q^{-1}b</script><p><script type="math/tex">Q^{-1}</script>已于前一节求出，<script type="math/tex">R</script>为上三角矩阵，故此方程组很好求解。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/22/QR分解求解线性方程组/" data-id="ck4fpzt4l00006stiaoeb6xcp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/09/几个用于计算差分格式系数的MATLAB程序/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">几个用于计算差分格式系数的MATLAB程序</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/22/QR分解求解线性方程组/">QR分解求解线性方程组</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/09/几个用于计算差分格式系数的MATLAB程序/">几个用于计算差分格式系数的MATLAB程序</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/07/双曲型方程组与黎曼解/">双曲型方程组与黎曼解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/19/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Zheng Feng-Yi<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
